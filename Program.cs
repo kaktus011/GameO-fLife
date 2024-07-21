@@ -2,14 +2,15 @@
 
 class Program
 {
-  private const int X = 64;
-  private const int Y = 64;
+  //common display resoution to for square look in console (can be changed to user's preference) 
+  private const int X = 48;
+  private const int Y = 80;
   private const char LIVE_CELL = '@';
   private const char DEAD_CELL = '-';
 
   private static int[][] successor = new int[X][];
   private static int[][] current = new int[X][];
-  private static string[] patterns = {"Blinker", "Glider"};
+  private static string[] patterns = {"Blinker", "Glider", "Toad", "LWSS"};
 
   static void Main(string[] args)
   {
@@ -45,13 +46,42 @@ class Program
       successor[X / 2][Y / 2] = 1;
       successor[X / 2][Y / 2 + 1] = 1;
       successor[X / 2][Y / 2 + 2] = 1;
+
       successor[X / 2 + 1][Y / 2 + 2] = 1;
+
       successor[X / 2 + 2][Y / 2 + 1] = 1;
     }
     else if (pattern == "Blinker") {
       successor[X / 2][Y / 2] = 1;
+
       successor[X / 2][Y / 2 + 1] = 1;
       successor[X / 2][Y / 2 + 2] = 1;
+    }
+    else if (pattern == "Toad") {
+      successor[X / 2][Y / 2] = 1;
+      successor[X / 2][Y / 2 + 1] = 1;
+      successor[X / 2][Y / 2 + 2] = 1;
+
+      successor[X / 2 + 1][Y / 2 - 1] = 1;
+      successor[X / 2 + 1][Y / 2] = 1;
+      successor[X / 2 + 1][Y / 2 + 1] = 1;
+    }
+    else if (pattern == "LWSS") { //Light Weight Space Ship. Turns into glider 
+      successor[X / 2][Y / 2] = 1;
+      successor[X / 2][Y / 2 + 1] = 1;
+
+      successor[X / 2 + 1][Y / 2 - 2] = 1;
+      successor[X / 2 + 1][Y / 2 - 1] = 1;
+      successor[X / 2 + 1][Y / 2 + 1] = 1;
+      successor[X / 2 + 1][Y / 2 + 2] = 1;
+
+      successor[X / 2 + 2][Y / 2] = 1;
+      successor[X / 2 + 2][Y / 2 + 1] = 1;
+      successor[X / 2 + 2][Y / 2 - 1] = 1;
+      successor[X / 2 + 2][Y / 2 - 2] = 1;
+
+      successor[X / 2 + 3][Y / 2] = 1;
+      successor[X / 2 + 3][Y / 2 - 1] = 1;
     }
 
     Swap();
@@ -75,7 +105,7 @@ class Program
     Swap();
 
     if (HasLiveNeighbour(successor)) {
-      Thread.Sleep(250);
+      Thread.Sleep(175); //game speed
       PrintSuccessor();
     }
   }
@@ -93,7 +123,7 @@ class Program
     }
 
     Console.WriteLine();
-    for (int i = 0; i < X; i++)
+    for (int i = 0; i < Y; i++)
       Console.Write('+');
     Console.WriteLine();
 

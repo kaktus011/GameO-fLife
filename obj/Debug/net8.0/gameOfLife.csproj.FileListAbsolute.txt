@@ -12,3 +12,4 @@
 /home/denis/Desktop/gameOfLife/obj/Debug/net8.0/gameOfLife.pdb
 /home/denis/Desktop/gameOfLife/obj/Debug/net8.0/gameOfLife.genruntimeconfig.cache
 /home/denis/Desktop/gameOfLife/obj/Debug/net8.0/ref/gameOfLife.dll
+/home/denis/Desktop/gameOfLife/obj/Debug/net8.0/gameOfLife.sourcelink.json
