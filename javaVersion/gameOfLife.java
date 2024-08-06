@@ -29,12 +29,12 @@ class gameOfLife {
     successor[X / 2 + 3][Y / 2] = 1;
     successor[X / 2 + 3][Y / 2 - 1] = 1;
 
-    swapGenerations();
+    updateCurrent();
     printSuccessor();
     getNextGeneration();
   }
 
-  public static void swapGenerations() {
+  public static void updateCurrent() {
     for (int i = 0; i < X; i++) {
       for (int k = 0; k < Y; k++) {
         current[i][k] = successor[i][k];
@@ -72,7 +72,7 @@ class gameOfLife {
 
     //end the game when current and succesor are the same
     if(!gameEnd()) {
-      swapGenerations();
+      updateCurrent();
 
       try {
         Thread.sleep(175);
@@ -103,17 +103,6 @@ class gameOfLife {
     }
 
     return live;
-  }
-
-  public static boolean checkSuccessorForAnyLiveCells() {
-    for (int i = 0; i < X; i++) {
-      for (int k = 0; k < Y; k++) {
-        if (successor[i][k] == 1)
-          return true;
-      }
-    }
-
-    return false;
   }
 
   public static boolean gameEnd() {

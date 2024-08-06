@@ -1,0 +1,3 @@
+/home/denis/projects/gameOfLife/cppVersion/build/CMakeFiles/run.dir
+/home/denis/projects/gameOfLife/cppVersion/build/CMakeFiles/edit_cache.dir
+/home/denis/projects/gameOfLife/cppVersion/build/CMakeFiles/rebuild_cache.dir
